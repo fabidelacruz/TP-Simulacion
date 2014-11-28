@@ -19,11 +19,16 @@ namespace TP_Final_Simulacion.Ventanas
             InitializeComponent();
         }
 
-        private void agregarButton_Click(object sender, EventArgs e)
+
+        private void simular_Click(object sender, EventArgs e)
         {
-            this.flowLayoutPanel1.Controls.Add(new GroupBox());
-            progressBar1.Increment(100);
-            progressBar1.Increment(-100);
+            Form2 resultados = new Form2();
+            resultados.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     
 
