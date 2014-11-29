@@ -1,6 +1,6 @@
 ﻿namespace TP_Final_Simulacion.Ventanas
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Variable del diseñador requerida.
@@ -30,16 +30,16 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.button1 = new System.Windows.Forms.Button();
+            this.limpiarButton = new System.Windows.Forms.Button();
             this.simular = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.tiempo = new System.Windows.Forms.TextBox();
+            this.vehiculos = new System.Windows.Forms.TextBox();
+            this.ambulancias = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -60,14 +60,15 @@
             this.progressBar1.Size = new System.Drawing.Size(378, 23);
             this.progressBar1.TabIndex = 9;
             // 
-            // button1
+            // limpiarButton
             // 
-            this.button1.Location = new System.Drawing.Point(294, 216);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.limpiarButton.Location = new System.Drawing.Point(294, 216);
+            this.limpiarButton.Name = "limpiarButton";
+            this.limpiarButton.Size = new System.Drawing.Size(75, 23);
+            this.limpiarButton.TabIndex = 0;
+            this.limpiarButton.Text = "Limpiar";
+            this.limpiarButton.UseVisualStyleBackColor = true;
+            this.limpiarButton.Click += new System.EventHandler(this.limpiarButton_Click);
             // 
             // simular
             // 
@@ -90,9 +91,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tiempo);
+            this.groupBox1.Controls.Add(this.vehiculos);
+            this.groupBox1.Controls.Add(this.ambulancias);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -101,55 +102,58 @@
             this.groupBox1.Size = new System.Drawing.Size(354, 160);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
+            this.groupBox1.Text = "Parametros";
             // 
-            // label1
+            // tiempo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 37);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ambulancias";
+            this.tiempo.Location = new System.Drawing.Point(169, 117);
+            this.tiempo.Name = "tiempo";
+            this.tiempo.Size = new System.Drawing.Size(100, 20);
+            this.tiempo.TabIndex = 5;
+            this.tiempo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             // 
-            // label2
+            // vehiculos
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(40, 86);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Vehiculos";
+            this.vehiculos.Location = new System.Drawing.Point(169, 71);
+            this.vehiculos.Name = "vehiculos";
+            this.vehiculos.Size = new System.Drawing.Size(100, 20);
+            this.vehiculos.TabIndex = 4;
+            this.vehiculos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
+            // 
+            // ambulancias
+            // 
+            this.ambulancias.Location = new System.Drawing.Point(169, 29);
+            this.ambulancias.Name = "ambulancias";
+            this.ambulancias.Size = new System.Drawing.Size(100, 20);
+            this.ambulancias.TabIndex = 3;
+            this.ambulancias.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textbox_KeyPress);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(40, 124);
+            this.label3.Location = new System.Drawing.Point(36, 120);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 13);
+            this.label3.Size = new System.Drawing.Size(96, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Tiempo";
+            this.label3.Text = "Tiempo Simulacion";
             // 
-            // textBox1
+            // label2
             // 
-            this.textBox1.Location = new System.Drawing.Point(169, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 3;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(36, 74);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(113, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Cantidad de Vehiculos";
             // 
-            // textBox2
+            // label1
             // 
-            this.textBox2.Location = new System.Drawing.Point(169, 78);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 4;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(169, 117);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 5;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(36, 32);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(127, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Cantidad de Ambulancias";
             // 
             // Form1
             // 
@@ -159,7 +163,7 @@
             this.ClientSize = new System.Drawing.Size(384, 287);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.limpiarButton);
             this.Controls.Add(this.simular);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.panel1);
@@ -167,8 +171,7 @@
             this.MaximumSize = new System.Drawing.Size(1024, 768);
             this.Name = "Form1";
             this.Padding = new System.Windows.Forms.Padding(3);
-            this.Text = "Pagina Principal";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Text = "¡Codigo Rojo!";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -180,13 +183,13 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button limpiarButton;
         private System.Windows.Forms.Button simular;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tiempo;
+        private System.Windows.Forms.TextBox vehiculos;
+        private System.Windows.Forms.TextBox ambulancias;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;

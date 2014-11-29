@@ -1,6 +1,6 @@
 ﻿namespace TP_Final_Simulacion.Ventanas
 {
-    partial class Form2
+    partial class Results
     {
         /// <summary>
         /// Required designer variable.

@@ -11,11 +11,11 @@ using System.Windows.Forms.DataVisualization.Charting;
 
 namespace TP_Final_Simulacion.Ventanas
 {
-    public partial class Form2 : Form
+    public partial class Results : Form
     {
 
         private List<Int32> valores = new List<int>() { 2,3,4,5,6};
-        public Form2()
+        public Results()
         {
             InitializeComponent();
             this.chart1.Series.Add("Algo1");
