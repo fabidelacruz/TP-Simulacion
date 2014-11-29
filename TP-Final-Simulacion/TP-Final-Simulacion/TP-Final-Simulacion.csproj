@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\Ambulancia.cs" />
-    <Compile Include="Clases\EventUtils.cs" />
+    <Compile Include="Clases\Events.cs" />
+    <Compile Include="Clases\Funciones.cs" />
+    <Compile Include="Clases\NoElementException.cs" />
     <Compile Include="Clases\Simulacion.cs" />
     <Compile Include="Clases\Escenario.cs" />
     <Compile Include="Clases\ArrayUtils.cs" />

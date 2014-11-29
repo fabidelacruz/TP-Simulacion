@@ -12,7 +12,7 @@ namespace TP_Final_Simulacion.Clases
 
         public Ambulancia()
         {
-            tiempo = UInt32.MinValue;
+            tiempo = UInt32.MaxValue;
         }
     }
 }

@@ -13,11 +13,11 @@ namespace TP_Final_Simulacion.Clases
         {
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = UInt32.MinValue;
+                array[i] = UInt32.MaxValue;
             }
         }
 
-        public static int obtenerMenorTPSA(Ambulancia[] TPSA)
+        public static int obtenerIndiceMenorTPSA(Ambulancia[] TPSA)
         {
             int j = 0;
 
@@ -32,7 +32,7 @@ namespace TP_Final_Simulacion.Clases
             return j;
         }
 
-        public static int obtenerMenorTPSV(UInt32[] TPSV)
+        public static int obtenerIndiceMenorTPSV(UInt32[] TPSV)
         {
             int j = 0;
 
@@ -47,5 +47,13 @@ namespace TP_Final_Simulacion.Clases
             return j;
         }
 
+
+        internal static void inicializarArray(Ambulancia[] TPSA)
+        {
+            for (int i = 0; i < TPSA.Length; i++ )
+            {
+                TPSA[i] = new Ambulancia();
+            }
+        }
     }
 }

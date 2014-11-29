@@ -9,14 +9,25 @@ namespace TP_Final_Simulacion.Clases
 {
     class Simulacion
     {
-        private Random random = new Random();
-        private ProgressBar progressBar;
-        private UInt32 ambulancias;
-        private UInt32 vehiculos;
-        private UInt32 tiempo;
-        private Ambulancia[] TPSA; 
-        private UInt32[] TPSV;
-        private int NT;
+        public Random random = new Random();
+        public ProgressBar progressBar;
+        public UInt32 ambulancias;
+        public UInt32 vehiculos;
+        public UInt32 tiempo;
+        public Ambulancia[] TPSA; 
+        public UInt32[] TPSV;
+        public int NT;
+        public uint T = 0;
+        public uint NSR = 0;
+        public uint NSA = 0;
+        public uint NSV = 0;
+        public uint SSC = 0;
+        public uint TPLL = 0;
+        public uint SLLC = 0;
+        public uint[] STOA;
+        public uint[] STOV;
+        public uint[] ITOA;
+        public uint[] ITOV;
 
         public Simulacion(UInt32 ambulancias, UInt32 vehiculos, UInt32 tiempo, ProgressBar progressBar)
         {
@@ -25,6 +36,10 @@ namespace TP_Final_Simulacion.Clases
             this.vehiculos = vehiculos;
             this.tiempo = tiempo;
 
+            STOA = new uint[ambulancias];
+            STOV = new uint[vehiculos];
+            ITOA = new uint[ambulancias];
+            ITOV = new uint[vehiculos];
             TPSA = new Ambulancia[ambulancias];
             TPSV = new UInt32[vehiculos];
 
@@ -33,51 +48,54 @@ namespace TP_Final_Simulacion.Clases
 
         public void run()
         {
-            uint t = 0;
-            uint NSR = 0;
-            uint NSA = 0;
-            uint NSV = 0;
-            uint SSC = 0;
-            uint TPLL = 0;
-            uint SLLC = 0;
-            uint value = 0;
-            uint[] STOA = new uint[ambulancias];
-            uint[] STOV = new uint[vehiculos];
-            uint[] ITOA = new uint[ambulancias];
-            uint[] ITOV = new uint[vehiculos];
-            
+            ArrayUtils.inicializarArray(TPSA);
             ArrayUtils.inicializarArray(STOA);
             ArrayUtils.inicializarArray(ITOA);
             ArrayUtils.inicializarArray(STOV);
             ArrayUtils.inicializarArray(ITOV);
 
-            while (t < tiempo)
+            while (T < tiempo)
+            {   
+                this.iterar();
+                progressBar.Value = Convert.ToInt32(T * 100 / tiempo);
+                progressBar.Refresh();
+            }
+            while (NSR + NSA + NSV > 0)
             {
-                
-                if (TPLL <= ArrayUtils.obtenerMenorTPSA(TPSA))
+                TPLL = UInt32.MaxValue;
+                this.iterar();
+            }
+
+            
+        }
+
+        private void iterar() 
+        {
+            int i = 0;
+            if (TPLL < TPSA[ArrayUtils.obtenerIndiceMenorTPSA(TPSA)].tiempo)
                 {
                     if (TPLL <= TPSV.Min()) 
                     {
-                        EventUtils.llegadaLlamado(t, TPLL, NSR, NSA, NSV, SLLC, TPSA, TPSV, STOA, ITOA, STOV, ITOV);
+                        T = TPLL;
+                        
+                        Events.llegadaLlamado(this);
                     }
                     else
                     {
-                        t = TPSV.Min();
-                        EventUtils.salidaVehiculo(t, NSV, TPSV, ITOV, SSC);
+                        i = ArrayUtils.obtenerIndiceMenorTPSV(TPSV);
+                        T = TPSV[i];
+                        Events.salidaVehiculo(this, i);
                     }
                 }
-                else if (ArrayUtils.obtenerMenorTPSA(TPSA) <= ArrayUtils.obtenerMenorTPSV(TPSV))
+                else if (ArrayUtils.obtenerIndiceMenorTPSA(TPSA) <= ArrayUtils.obtenerIndiceMenorTPSV(TPSV))
                 {
-                    EventUtils.salidaAmbulancia();
+                    i = ArrayUtils.obtenerIndiceMenorTPSA(TPSA);
+                    T = TPSA[i].tiempo;
+                    Events.salidaAmbulancia(this, i);
                 }
 
-                progressBar.Value = Convert.ToInt32(t * 100 / tiempo);
+            
             }
-
-        }
-
-        
-
-        
+               
     }
 }
