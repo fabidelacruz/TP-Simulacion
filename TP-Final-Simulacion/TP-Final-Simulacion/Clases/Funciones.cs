@@ -8,22 +8,22 @@ namespace TP_Final_Simulacion.Clases
 {
     class Funciones
     {
-        public static UInt32 IA()
+        public static Double IA()
         {
-            return 1;
+            return 1.0;
         }
 
-        public static UInt32 TAR()
+        public static Double TAR()
         {
-            return 1;
+            return 1.0;
         }
-        public static UInt32 TAA()
+        public static Double TAA()
         {
-            return 1;
+            return 1.0;
         }
-        public static UInt32 TAV()
+        public static Double TAV()
         {
-            return 1;
+            return 1.0;
         }
     }
 }

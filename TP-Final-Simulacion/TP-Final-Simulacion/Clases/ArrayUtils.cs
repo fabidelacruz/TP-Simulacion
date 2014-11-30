@@ -9,11 +9,11 @@ namespace TP_Final_Simulacion.Clases
     class ArrayUtils
     {
 
-        public static void inicializarArray(UInt32[] array)
+        public static void inicializarArray(Double[] array)
         {
             for (int i = 0; i < array.Length; i++)
             {
-                array[i] = UInt32.MaxValue;
+                array[i] = Double.MaxValue;
             }
         }
 
@@ -32,7 +32,7 @@ namespace TP_Final_Simulacion.Clases
             return j;
         }
 
-        public static int obtenerIndiceMenorTPSV(UInt32[] TPSV)
+        public static int obtenerIndiceMenorTPSV(Double[] TPSV)
         {
             int j = 0;
 

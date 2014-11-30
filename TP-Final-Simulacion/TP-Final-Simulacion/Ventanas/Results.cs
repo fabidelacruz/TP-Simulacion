@@ -7,19 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TP_Final_Simulacion.Clases;
 using System.Windows.Forms.DataVisualization.Charting;
 
 namespace TP_Final_Simulacion.Ventanas
 {
     public partial class Results : Form
     {
-
-        private List<Int32> valores = new List<int>() { 2,3,4,5,6};
-        public Results()
+        private Resultados result;
+        public Results(Resultados resultados)
         {
             InitializeComponent();
-            this.chart1.Series.Add("Algo1");
-            this.chart1.Series.Add("Algo2");
+            result = resultados;
+
         }
     }
 }

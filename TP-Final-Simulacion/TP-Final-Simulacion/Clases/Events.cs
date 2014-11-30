@@ -11,9 +11,9 @@ namespace TP_Final_Simulacion.Clases
 
         public static void salidaAmbulancia(Simulacion simulacion, int i)
         {
-            UInt32 TA = 0;
-            UInt32 TAR = 0;
-            UInt32 TAA = 0;
+            Double TA = 0;
+            Double TAR = 0;
+            Double TAA = 0;
 
             switch (simulacion.TPSA[i].codigo)
             {
@@ -43,7 +43,7 @@ namespace TP_Final_Simulacion.Clases
             }
             else
             {
-                simulacion.TPSA[i].tiempo = UInt32.MaxValue;
+                simulacion.TPSA[i].tiempo = Double.MaxValue;
                 simulacion.ITOA[i] = simulacion.T;
             }
 
@@ -52,7 +52,7 @@ namespace TP_Final_Simulacion.Clases
 
         public static void salidaVehiculo(Simulacion simulacion, int i)
         {
-            uint TAV = 0;
+            Double TAV = 0;
 
             simulacion.NSV--;
 
@@ -64,7 +64,7 @@ namespace TP_Final_Simulacion.Clases
             }
             else
             {
-                simulacion.TPSV[i] = UInt32.MaxValue;
+                simulacion.TPSV[i] = Double.MaxValue;
                 simulacion.ITOV[i] = simulacion.T;
             }
         }
@@ -73,7 +73,7 @@ namespace TP_Final_Simulacion.Clases
         {
             int i = 0;
 
-            while (i < TPSA.Length && TPSA[i].tiempo != UInt32.MaxValue)
+            while (i < TPSA.Length && TPSA[i].tiempo != Double.MaxValue)
             {
                 i++;
             }
@@ -86,11 +86,11 @@ namespace TP_Final_Simulacion.Clases
             return i;
         }
 
-        private static int buscarVehiculoLibre(UInt32[] TPSV)
+        private static int buscarVehiculoLibre(Double[] TPSV)
         {
             int i = 0;
 
-            while (i < TPSV.Length && TPSV[i] != UInt32.MaxValue)
+            while (i < TPSV.Length && TPSV[i] != Double.MaxValue)
             {
                 i++;
             }
@@ -106,10 +106,10 @@ namespace TP_Final_Simulacion.Clases
         public static void llegadaLlamado(Simulacion simulacion)
         {
             int i;
-            uint IA = 0;
-            uint TAR = 0;
-            uint TAA = 0;
-            uint TAV = 0;
+            Double IA = 0;
+            Double TAR = 0;
+            Double TAA = 0;
+            Double TAV = 0;
             Random random = new Random();
             double r = random.NextDouble();
 
@@ -150,7 +150,7 @@ namespace TP_Final_Simulacion.Clases
             }
         }
 
-        private static void verificarYEnviarAmbulancia(Simulacion simulacion, UInt32 TA, Char codigo)
+        private static void verificarYEnviarAmbulancia(Simulacion simulacion, Double TA, Char codigo)
         {
             switch (codigo)
             {
@@ -177,7 +177,7 @@ namespace TP_Final_Simulacion.Clases
             }
         }
 
-        private static void enviarAmbulancia(Simulacion simulacion, int i, UInt32 TA, Char codigo)
+        private static void enviarAmbulancia(Simulacion simulacion, int i, Double TA, Char codigo)
         {
             simulacion.STOA[i] += simulacion.T - simulacion.ITOA[i];
             simulacion.TPSA[i].tiempo = simulacion.T + TA;

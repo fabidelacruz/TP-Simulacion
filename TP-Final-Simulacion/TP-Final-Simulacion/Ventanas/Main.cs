@@ -24,22 +24,22 @@ namespace TP_Final_Simulacion.Ventanas
             return !box.Text.Equals("");
         }
 
-        private void generarSimulacion()
+        private Resultados generarSimulacion()
         {
-            UInt32 ambulancias = UInt32.Parse(this.ambulancias.Text);
-            UInt32 vehiculos = UInt32.Parse(this.vehiculos.Text);
-            UInt32 tiempo = UInt32.Parse(this.tiempo.Text);
+            Int32 ambulancias = Int32.Parse(this.ambulancias.Text);
+            Int32 vehiculos = Int32.Parse(this.vehiculos.Text);
+            Int32 tiempo = Int32.Parse(this.tiempo.Text);
 
             Simulacion simulacion = new Simulacion(ambulancias, vehiculos, tiempo, progressBar1);
-            simulacion.run();
+            return simulacion.run();
         }
 
         private void simular_Click(object sender, EventArgs e)
         {
             if (isNotEmpty(ambulancias) && isNotEmpty(vehiculos) && isNotEmpty(tiempo))
             {
-                this.generarSimulacion();
-                Results resultados = new Results();
+                
+                Results resultados = new Results(this.generarSimulacion());
                 resultados.Show();
             } else
             {

@@ -7,12 +7,12 @@ namespace TP_Final_Simulacion.Clases
 {
     class Ambulancia
     {
-        public UInt32 tiempo { get; set; }
+        public Double tiempo { get; set; }
         public Char codigo { get; set; }
 
         public Ambulancia()
         {
-            tiempo = UInt32.MaxValue;
+            tiempo = Double.MaxValue;
         }
     }
 }

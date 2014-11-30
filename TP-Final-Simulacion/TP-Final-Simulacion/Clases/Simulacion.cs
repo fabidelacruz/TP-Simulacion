@@ -11,42 +11,42 @@ namespace TP_Final_Simulacion.Clases
     {
         public Random random = new Random();
         public ProgressBar progressBar;
-        public UInt32 ambulancias;
-        public UInt32 vehiculos;
-        public UInt32 tiempo;
+        public Int32 ambulancias;
+        public Int32 vehiculos;
+        public Double tiempo;
         public Ambulancia[] TPSA; 
-        public UInt32[] TPSV;
+        public Double[] TPSV;
         public int NT;
-        public uint T = 0;
-        public uint NSR = 0;
-        public uint NSA = 0;
-        public uint NSV = 0;
-        public uint SSC = 0;
-        public uint TPLL = 0;
-        public uint SLLC = 0;
-        public uint[] STOA;
-        public uint[] STOV;
-        public uint[] ITOA;
-        public uint[] ITOV;
+        public Double T = 0;
+        public Double NSR = 0;
+        public Double NSA = 0;
+        public Double NSV = 0;
+        public Double SSC = 0;
+        public Double TPLL = 0;
+        public Double SLLC = 0;
+        public Double[] STOA;
+        public Double[] STOV;
+        public Double[] ITOA;
+        public Double[] ITOV;
 
-        public Simulacion(UInt32 ambulancias, UInt32 vehiculos, UInt32 tiempo, ProgressBar progressBar)
+        public Simulacion(Int32 ambulancias, Int32 vehiculos, Double tiempo, ProgressBar progressBar)
         {
             this.progressBar = progressBar;
             this.ambulancias = ambulancias;
             this.vehiculos = vehiculos;
             this.tiempo = tiempo;
 
-            STOA = new uint[ambulancias];
-            STOV = new uint[vehiculos];
-            ITOA = new uint[ambulancias];
-            ITOV = new uint[vehiculos];
+            STOA = new Double[ambulancias];
+            STOV = new Double[vehiculos];
+            ITOA = new Double[ambulancias];
+            ITOV = new Double[vehiculos];
             TPSA = new Ambulancia[ambulancias];
-            TPSV = new UInt32[vehiculos];
+            TPSV = new Double[vehiculos];
 
             ArrayUtils.inicializarArray(TPSV);
         }
 
-        public void run()
+        public Resultados run()
         {
             ArrayUtils.inicializarArray(TPSA);
             ArrayUtils.inicializarArray(STOA);
@@ -62,11 +62,13 @@ namespace TP_Final_Simulacion.Clases
             }
             while (NSR + NSA + NSV > 0)
             {
-                TPLL = UInt32.MaxValue;
+                TPLL = Double.MaxValue;
                 this.iterar();
             }
 
-            
+            Resultados results = new Resultados();
+
+            return results;
         }
 
         private void iterar() 
