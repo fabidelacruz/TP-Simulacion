@@ -16,7 +16,7 @@ namespace TP_Final_Simulacion.Clases
         public Double tiempo;
         public Ambulancia[] TPSA; 
         public Double[] TPSV;
-        public int NT;
+        public int NT = 0;
         public Double T = 0;
         public Double NSR = 0;
         public Double NSA = 0;
@@ -43,16 +43,16 @@ namespace TP_Final_Simulacion.Clases
             TPSA = new Ambulancia[ambulancias];
             TPSV = new Double[vehiculos];
 
-            ArrayUtils.inicializarArray(TPSV);
         }
 
         public Resultados run()
         {
+            ArrayUtils.inicializarArray(TPSV);
             ArrayUtils.inicializarArray(TPSA);
-            ArrayUtils.inicializarArray(STOA);
-            ArrayUtils.inicializarArray(ITOA);
-            ArrayUtils.inicializarArray(STOV);
-            ArrayUtils.inicializarArray(ITOV);
+            ArrayUtils.inicializarArrayVacio(STOA);
+            ArrayUtils.inicializarArrayVacio(ITOA);
+            ArrayUtils.inicializarArrayVacio(STOV);
+            ArrayUtils.inicializarArrayVacio(ITOV);
 
             while (T < tiempo)
             {   
@@ -66,9 +66,21 @@ namespace TP_Final_Simulacion.Clases
                 this.iterar();
             }
 
-            Resultados results = new Resultados();
+            Resultados results = new Resultados(ambulancias, vehiculos, tiempo, this.generarResultados(STOA), this.generarResultados(STOV), (SSC-SLLC)/NT);
 
             return results;
+        }
+
+        private Double[] generarResultados(Double[] STO)
+        {
+            Double[] result = new Double[STO.Length];
+
+            for (int i = 0; i < STO.Length; i++)
+            {
+                result[i] = (STO[i] * 100 /T);
+            }
+
+            return result;
         }
 
         private void iterar() 
@@ -78,8 +90,7 @@ namespace TP_Final_Simulacion.Clases
                 {
                     if (TPLL <= TPSV.Min()) 
                     {
-                        T = TPLL;
-                        
+                        NT++;
                         Events.llegadaLlamado(this);
                     }
                     else
@@ -89,15 +100,30 @@ namespace TP_Final_Simulacion.Clases
                         Events.salidaVehiculo(this, i);
                     }
                 }
-                else if (ArrayUtils.obtenerIndiceMenorTPSA(TPSA) <= ArrayUtils.obtenerIndiceMenorTPSV(TPSV))
+                else if (TPSA[ArrayUtils.obtenerIndiceMenorTPSA(TPSA)].tiempo <= TPSV[ArrayUtils.obtenerIndiceMenorTPSV(TPSV)])
                 {
                     i = ArrayUtils.obtenerIndiceMenorTPSA(TPSA);
                     T = TPSA[i].tiempo;
                     Events.salidaAmbulancia(this, i);
                 }
+                else
+                {
+                    i = ArrayUtils.obtenerIndiceMenorTPSV(TPSV);
+                    T = TPSV[i];
+                    Events.salidaVehiculo(this, i);
+                }
 
-            
             }
-               
+
+
+        public Int32 cantidadRojos()
+        {
+           return TPSA.Count(e => e.codigo == 'R');
+        }
+
+        public Int32 cantidadAmarillos()
+        {
+            return TPSA.Count(e => e.codigo == 'A');
+        }
     }
 }

@@ -30,7 +30,7 @@ namespace TP_Final_Simulacion.Clases
             {
                 simulacion.SSC += simulacion.T;
 
-                if (simulacion.NSR > 0)
+                if (simulacion.cantidadRojos() >= simulacion.cantidadAmarillos())
                 {
                     TAR = Funciones.TAR();
                     enviarAmbulancia(simulacion, i, TA, 'R');
@@ -155,11 +155,11 @@ namespace TP_Final_Simulacion.Clases
             switch (codigo)
             {
                 case 'R':
-                    simulacion.NSR++;
+                    simulacion.NSR--;
                     break;
 
                 case 'A':
-                    simulacion.NSA++;
+                    simulacion.NSA--;
                     break;
             }
             if ((simulacion.NSR + simulacion.NSA) <= simulacion.TPSA.Length)

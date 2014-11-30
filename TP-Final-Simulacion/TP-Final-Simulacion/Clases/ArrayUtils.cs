@@ -55,5 +55,13 @@ namespace TP_Final_Simulacion.Clases
                 TPSA[i] = new Ambulancia();
             }
         }
+
+        internal static void inicializarArrayVacio(double[] values)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                values[i] = 0;
+            }
+        }
     }
 }

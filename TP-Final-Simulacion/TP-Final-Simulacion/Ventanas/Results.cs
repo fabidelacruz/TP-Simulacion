@@ -19,7 +19,23 @@ namespace TP_Final_Simulacion.Ventanas
         {
             InitializeComponent();
             result = resultados;
-
         }
+
+        private void Results_Load(object sender, EventArgs e)
+        {
+            chart1.Series.Add("PTOA");
+            chart1.Series.Add("PTOV");
+            addValues(chart1.Series["PTOA"].Points, result.PTOA);
+            addValues(chart1.Series["PTOV"].Points, result.PTOV);
+        }
+
+        private void addValues(DataPointCollection dataPointCollection, double[] p)
+        {
+            for (int i = 0; i < p.Length; i++)
+            {
+                dataPointCollection.AddXY(i + 1, p[i]);
+            }
+        }
+
     }
 }
