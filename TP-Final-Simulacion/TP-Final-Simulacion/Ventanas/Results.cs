@@ -27,6 +27,11 @@ namespace TP_Final_Simulacion.Ventanas
             chart1.Series.Add("PTOV");
             addValues(chart1.Series["PTOA"].Points, result.PTOA);
             addValues(chart1.Series["PTOV"].Points, result.PTOV);
+
+            ambulancias.Text = result.ambulancias.ToString();
+            vehiculos.Text = result.vehiulos.ToString();
+            tiempo.Text = result.tiempo.ToString();
+            pec.Text = Math.Round(result.PEC,2).ToString();
         }
 
         private void addValues(DataPointCollection dataPointCollection, double[] p)

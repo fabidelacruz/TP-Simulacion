@@ -115,7 +115,6 @@ namespace TP_Final_Simulacion.Clases
 
             }
 
-
         public Int32 cantidadRojos()
         {
            return TPSA.Count(e => e.codigo == 'R');
