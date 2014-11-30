@@ -58,7 +58,7 @@ namespace TP_Final_Simulacion.Clases
 
             if (simulacion.NSV >= simulacion.TPSV.Length)
             {
-                simulacion.SSC = simulacion.SSC + simulacion.T;
+                simulacion.SSC += simulacion.T;
                 TAV = Funciones.TAV();
                 simulacion.TPSV[i] = simulacion.T + TAV;
             }
@@ -152,16 +152,7 @@ namespace TP_Final_Simulacion.Clases
 
         private static void verificarYEnviarAmbulancia(Simulacion simulacion, Double TA, Char codigo)
         {
-            switch (codigo)
-            {
-                case 'R':
-                    simulacion.NSR--;
-                    break;
-
-                case 'A':
-                    simulacion.NSA--;
-                    break;
-            }
+            
             if ((simulacion.NSR + simulacion.NSA) <= simulacion.TPSA.Length)
             {
                 int i = buscarAmbulanciaLibre(simulacion.TPSA);
