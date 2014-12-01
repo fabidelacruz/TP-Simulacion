@@ -38,7 +38,7 @@ namespace TP_Final_Simulacion.Ventanas
         {
             for (int i = 0; i < p.Length; i++)
             {
-                dataPointCollection.AddXY(i + 1, Math.Round(p[i], 2));
+                dataPointCollection.AddXY(i + 1, p[i]);
             }
             
         }
