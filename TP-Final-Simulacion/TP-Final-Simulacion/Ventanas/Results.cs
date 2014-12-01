@@ -38,8 +38,21 @@ namespace TP_Final_Simulacion.Ventanas
         {
             for (int i = 0; i < p.Length; i++)
             {
-                dataPointCollection.AddXY(i + 1, p[i]);
+                dataPointCollection.AddXY(i + 1, Math.Round(p[i], 2));
             }
+            
+        }
+
+        private void detallesAmbulancias_Click(object sender, EventArgs e)
+        {
+            Detalles ventana = new Detalles(result.PTOA);
+            ventana.Show();
+        }
+
+        private void detallesVehiculos_Click(object sender, EventArgs e)
+        {
+            Detalles ventana = new Detalles(result.PTOV);
+            ventana.Show();
         }
 
     }

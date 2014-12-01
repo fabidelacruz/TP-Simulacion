@@ -32,13 +32,13 @@ namespace TP_Final_Simulacion.Clases
             return j;
         }
 
-        public static int obtenerIndiceMenorTPSV(Double[] TPSV)
+        public static int obtenerIndiceMenorTPSV(Vehiculo[] TPSV)
         {
             int j = 0;
 
             for (int i = 1; i < TPSV.Length; i++)
             {
-                if (TPSV[i] < TPSV[j])
+                if (TPSV[i].tiempo < TPSV[j].tiempo)
                 {
                     j = i;
                 }
@@ -61,6 +61,14 @@ namespace TP_Final_Simulacion.Clases
             for (int i = 0; i < values.Length; i++)
             {
                 values[i] = 0;
+            }
+        }
+
+        internal static void inicializarArray(Vehiculo[] TPSV)
+        {
+            for (int i = 0; i < TPSV.Length; i++)
+            {
+                TPSV[i] = new Vehiculo();
             }
         }
     }

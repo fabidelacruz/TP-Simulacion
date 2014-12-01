@@ -54,6 +54,14 @@
     <Compile Include="Clases\Simulacion.cs" />
     <Compile Include="Clases\Escenario.cs" />
     <Compile Include="Clases\ArrayUtils.cs" />
+    <Compile Include="Clases\Vehiculo.cs" />
+    <Compile Include="Ventanas\Detalles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\Detalles.Designer.cs">
+      <DependentUpon>Detalles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clases\Item.cs" />
     <Compile Include="Ventanas\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +76,9 @@
     <Compile Include="Ventanas\Results.Designer.cs">
       <DependentUpon>Results.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Ventanas\Detalles.resx">
+      <DependentUpon>Detalles.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\Main.es-AR.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +99,7 @@
       <DependentUpon>Results.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\TP_Final_Simulacion.Ventanas.Form1.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -98,9 +110,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

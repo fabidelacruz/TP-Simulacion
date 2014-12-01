@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TP_Final_Simulacion.Clases
 {
-    class Ambulancia
+    public class Vehiculo
     {
+        public Boolean asignado { get; set; }
         public Double tiempo { get; set; }
-        public Char codigo { get; set; }
-        public Boolean asignado {get; set; }
 
-        public Ambulancia()
+        public Vehiculo()
         {
             tiempo = Double.MaxValue;
             asignado = false;

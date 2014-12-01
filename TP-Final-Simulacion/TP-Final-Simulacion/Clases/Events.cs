@@ -60,11 +60,12 @@ namespace TP_Final_Simulacion.Clases
             {
                 simulacion.SSC += simulacion.T;
                 TAV = Funciones.TAV();
-                simulacion.TPSV[i] = simulacion.T + TAV;
+                simulacion.TPSV[i].tiempo = simulacion.T + TAV;
+                simulacion.TPSV[i].asignado = true;
             }
             else
             {
-                simulacion.TPSV[i] = Double.MaxValue;
+                simulacion.TPSV[i].tiempo = Double.MaxValue;
                 simulacion.ITOV[i] = simulacion.T;
             }
         }
@@ -86,11 +87,11 @@ namespace TP_Final_Simulacion.Clases
             return i;
         }
 
-        private static int buscarVehiculoLibre(Double[] TPSV)
+        private static int buscarVehiculoLibre(Vehiculo[] TPSV)
         {
             int i = 0;
 
-            while (i < TPSV.Length && TPSV[i] != Double.MaxValue)
+            while (i < TPSV.Length && TPSV[i].tiempo != Double.MaxValue)
             {
                 i++;
             }
@@ -120,6 +121,7 @@ namespace TP_Final_Simulacion.Clases
             if (r <= 0.12)
             {
                 TAR = Funciones.TAR();
+                simulacion.NSR++;
                 verificarYEnviarAmbulancia(simulacion, TAR, 'R');
             }
             else if (r <= 0.33)
@@ -139,7 +141,8 @@ namespace TP_Final_Simulacion.Clases
                     {
                         simulacion.STOV[i] += simulacion.T - simulacion.ITOV[i];
                         TAV = Funciones.TAV();
-                        simulacion.TPSV[i] = simulacion.T + TAV;
+                        simulacion.TPSV[i].asignado = true;
+                        simulacion.TPSV[i].tiempo = simulacion.T + TAV;
                     }
                                        
                 }
@@ -173,6 +176,7 @@ namespace TP_Final_Simulacion.Clases
             simulacion.STOA[i] += simulacion.T - simulacion.ITOA[i];
             simulacion.TPSA[i].tiempo = simulacion.T + TA;
             simulacion.TPSA[i].codigo = codigo;
+            simulacion.TPSA[i].asignado = true;
         }
     }
 }

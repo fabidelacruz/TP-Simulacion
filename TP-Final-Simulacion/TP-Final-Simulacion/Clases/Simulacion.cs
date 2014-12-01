@@ -15,7 +15,7 @@ namespace TP_Final_Simulacion.Clases
         public Int32 vehiculos;
         public Double tiempo;
         public Ambulancia[] TPSA; 
-        public Double[] TPSV;
+        public Vehiculo[] TPSV;
         public int NT = 0;
         public Double T = 0;
         public Double NSR = 0;
@@ -41,7 +41,7 @@ namespace TP_Final_Simulacion.Clases
             ITOA = new Double[ambulancias];
             ITOV = new Double[vehiculos];
             TPSA = new Ambulancia[ambulancias];
-            TPSV = new Double[vehiculos];
+            TPSV = new Vehiculo[vehiculos];
 
         }
 
@@ -66,18 +66,44 @@ namespace TP_Final_Simulacion.Clases
                 this.iterar();
             }
 
-            Resultados results = new Resultados(ambulancias, vehiculos, tiempo, this.generarResultados(STOA), this.generarResultados(STOV), (SSC-SLLC)/NT);
+            Resultados results = new Resultados(ambulancias, vehiculos, tiempo, this.generarResultados(STOA, TPSA), this.generarResultados(STOV, TPSV), (SSC-SLLC)/NT);
 
             return results;
         }
 
-        private Double[] generarResultados(Double[] STO)
+        private Double[] generarResultados(Double[] STO, Ambulancia[] TPSA)
         {
             Double[] result = new Double[STO.Length];
 
             for (int i = 0; i < STO.Length; i++)
             {
-                result[i] = (STO[i] * 100 /T);
+                if (TPSA[i].asignado)
+                {
+                    result[i] = (STO[i] * 100 / T) / (T / 1440);
+                }
+                else
+                {
+                    result[i] = 100;
+                }
+            }
+
+            return result;
+        }
+
+        private Double[] generarResultados(Double[] STO, Vehiculo[] TPSV)
+        {
+            Double[] result = new Double[STO.Length];
+
+            for (int i = 0; i < STO.Length; i++)
+            {
+                if (TPSV[i].asignado)
+                {
+                    result[i] = (STO[i] * 100 / T) / (T / 1440);
+                }
+                else
+                {
+                    result[i] = 100;
+                }
             }
 
             return result;
@@ -88,7 +114,7 @@ namespace TP_Final_Simulacion.Clases
             int i = 0;
             if (TPLL < TPSA[ArrayUtils.obtenerIndiceMenorTPSA(TPSA)].tiempo)
                 {
-                    if (TPLL <= TPSV.Min()) 
+                    if (TPLL <= TPSV[ArrayUtils.obtenerIndiceMenorTPSV(TPSV)].tiempo) 
                     {
                         NT++;
                         Events.llegadaLlamado(this);
@@ -96,11 +122,11 @@ namespace TP_Final_Simulacion.Clases
                     else
                     {
                         i = ArrayUtils.obtenerIndiceMenorTPSV(TPSV);
-                        T = TPSV[i];
+                        T = TPSV[i].tiempo;
                         Events.salidaVehiculo(this, i);
                     }
                 }
-                else if (TPSA[ArrayUtils.obtenerIndiceMenorTPSA(TPSA)].tiempo <= TPSV[ArrayUtils.obtenerIndiceMenorTPSV(TPSV)])
+                else if (TPSA[ArrayUtils.obtenerIndiceMenorTPSA(TPSA)].tiempo <= TPSV[ArrayUtils.obtenerIndiceMenorTPSV(TPSV)].tiempo)
                 {
                     i = ArrayUtils.obtenerIndiceMenorTPSA(TPSA);
                     T = TPSA[i].tiempo;
@@ -109,7 +135,7 @@ namespace TP_Final_Simulacion.Clases
                 else
                 {
                     i = ArrayUtils.obtenerIndiceMenorTPSV(TPSV);
-                    T = TPSV[i];
+                    T = TPSV[i].tiempo;
                     Events.salidaVehiculo(this, i);
                 }
 
