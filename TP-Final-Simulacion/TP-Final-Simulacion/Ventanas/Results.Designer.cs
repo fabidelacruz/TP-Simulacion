@@ -42,9 +42,9 @@
             this.pec = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.detallesAmbulancias = new System.Windows.Forms.Button();
             this.detallesVehiculos = new System.Windows.Forms.Button();
+            this.detallesAmbulancias = new System.Windows.Forms.Button();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -167,12 +167,31 @@
             this.panel1.Size = new System.Drawing.Size(238, 479);
             this.panel1.TabIndex = 3;
             // 
+            // detallesVehiculos
+            // 
+            this.detallesVehiculos.Location = new System.Drawing.Point(10, 417);
+            this.detallesVehiculos.Name = "detallesVehiculos";
+            this.detallesVehiculos.Size = new System.Drawing.Size(119, 23);
+            this.detallesVehiculos.TabIndex = 4;
+            this.detallesVehiculos.Text = "Detalles Vehiculos";
+            this.detallesVehiculos.UseVisualStyleBackColor = true;
+            this.detallesVehiculos.Click += new System.EventHandler(this.detallesVehiculos_Click);
+            // 
+            // detallesAmbulancias
+            // 
+            this.detallesAmbulancias.Location = new System.Drawing.Point(10, 378);
+            this.detallesAmbulancias.Name = "detallesAmbulancias";
+            this.detallesAmbulancias.Size = new System.Drawing.Size(119, 23);
+            this.detallesAmbulancias.TabIndex = 3;
+            this.detallesAmbulancias.Text = "Detalles Ambulancias";
+            this.detallesAmbulancias.UseVisualStyleBackColor = true;
+            this.detallesAmbulancias.Click += new System.EventHandler(this.detallesAmbulancias_Click);
+            // 
             // chart1
             // 
             chartArea1.AxisX.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.SharpTriangle;
             chartArea1.AxisX.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
             chartArea1.AxisY.ArrowStyle = System.Windows.Forms.DataVisualization.Charting.AxisArrowStyle.SharpTriangle;
-            chartArea1.AxisY.IntervalAutoMode = System.Windows.Forms.DataVisualization.Charting.IntervalAutoMode.VariableCount;
             chartArea1.AxisY.IsInterlaced = true;
             chartArea1.CursorX.IntervalOffsetType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
             chartArea1.CursorX.IntervalType = System.Windows.Forms.DataVisualization.Charting.DateTimeIntervalType.Number;
@@ -190,26 +209,6 @@
             this.chart1.Size = new System.Drawing.Size(629, 479);
             this.chart1.TabIndex = 4;
             this.chart1.Text = "chart1";
-            // 
-            // detallesAmbulancias
-            // 
-            this.detallesAmbulancias.Location = new System.Drawing.Point(10, 378);
-            this.detallesAmbulancias.Name = "detallesAmbulancias";
-            this.detallesAmbulancias.Size = new System.Drawing.Size(119, 23);
-            this.detallesAmbulancias.TabIndex = 3;
-            this.detallesAmbulancias.Text = "Detalles Ambulancias";
-            this.detallesAmbulancias.UseVisualStyleBackColor = true;
-            this.detallesAmbulancias.Click += new System.EventHandler(this.detallesAmbulancias_Click);
-            // 
-            // detallesVehiculos
-            // 
-            this.detallesVehiculos.Location = new System.Drawing.Point(10, 417);
-            this.detallesVehiculos.Name = "detallesVehiculos";
-            this.detallesVehiculos.Size = new System.Drawing.Size(119, 23);
-            this.detallesVehiculos.TabIndex = 4;
-            this.detallesVehiculos.Text = "Detalles Vehiculos";
-            this.detallesVehiculos.UseVisualStyleBackColor = true;
-            this.detallesVehiculos.Click += new System.EventHandler(this.detallesVehiculos_Click);
             // 
             // Results
             // 

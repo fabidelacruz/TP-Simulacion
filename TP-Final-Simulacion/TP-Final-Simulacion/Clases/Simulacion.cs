@@ -93,12 +93,13 @@ namespace TP_Final_Simulacion.Clases
         private Double[] generarResultados(Double[] STO, Vehiculo[] TPSV)
         {
             Double[] result = new Double[STO.Length];
+            Double dias = T / 1440;
 
             for (int i = 0; i < STO.Length; i++)
             {
                 if (TPSV[i].asignado)
                 {
-                    result[i] = (STO[i] * 100 / T) / (T / 1440);
+                    result[i] = ((STO[i]/dias) * 100 / 1440);
                 }
                 else
                 {
